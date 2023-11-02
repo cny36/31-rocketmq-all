@@ -1,2 +1,4 @@
 # Project exclude paths
 /rocketmq-api/target/
+/.idea/
+rocketmq-all.iml
