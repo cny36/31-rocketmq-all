@@ -16,7 +16,7 @@ public class SyncProducer {
         producer.setNamesrvAddr("192.168.247.5:9876");
         producer.start();
 
-        Message message = new Message("OrderTopic", "创建0001号订单".getBytes("UTF-8"));
+        Message message = new Message("OrderTopic", "同步发送模式 - 创建0001号订单".getBytes("UTF-8"));
         SendResult sendResult = producer.send(message);
         System.out.println("生产者发送消息成功，返回结果：" + sendResult);
 

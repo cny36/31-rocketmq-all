@@ -15,7 +15,7 @@ public class OneWayProducer {
         producer.setNamesrvAddr("192.168.247.5:9876");
         producer.start();
 
-        Message message = new Message("OrderTopic", "这是一条单向消息".getBytes("UTF-8"));
+        Message message = new Message("OrderTopic", "单向发送模式 - 这是一条单向消息".getBytes("UTF-8"));
         producer.sendOneway(message);
 
         producer.shutdown();

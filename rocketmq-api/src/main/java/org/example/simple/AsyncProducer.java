@@ -17,7 +17,7 @@ public class AsyncProducer {
         producer.setNamesrvAddr("192.168.247.5:9876");
         producer.start();
 
-        Message message = new Message("OrderTopic", "create order 00001".getBytes("UTF-8"));
+        Message message = new Message("OrderTopic", "异步发送模式 - create order 00001".getBytes("UTF-8"));
         producer.send(message, new SendCallback() {
             public void onSuccess(SendResult sendResult) {
                 System.out.println("生产者发送消息成功，返回结果：" + sendResult);
