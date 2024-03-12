@@ -78,6 +78,7 @@ public class Producer {
 
     /**
      * 有序消息
+     * 创建、付款、推送、完成
      *
      * @return
      */
@@ -86,6 +87,7 @@ public class Producer {
         List<OrderStep> list = createList();
         for (OrderStep orderStep : list) {
             SendResult sendResult = rocketMQTemplate.syncSendOrderly("orderTopic", orderStep, String.valueOf(orderStep.getId()));
+            log.info("发送有序消息成功 {}", sendResult);
         }
         return "send success";
     }
