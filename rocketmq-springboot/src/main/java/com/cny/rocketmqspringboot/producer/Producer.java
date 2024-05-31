@@ -116,13 +116,13 @@ public class Producer {
      */
     @GetMapping("/sendBatchMsg")
     public String sendBatchMsg() {
-        List<Message> list = new ArrayList<>(3);
-        list.add(new GenericMessage("11111"));
-        list.add(new GenericMessage("22222"));
-        list.add(new GenericMessage("33333"));
+        List<Message<String>> list = new ArrayList<>(3);
+        list.add(new GenericMessage<>("11111"));
+        list.add(new GenericMessage<>("22222"));
+        list.add(new GenericMessage<>("33333"));
 
         SendResult sendResult = rocketMQTemplate.syncSend("batchTopic", list);
-        log.info("批量消息发送结束 {} {}", sendResult);
+        log.info("批量消息发送结束 {}", sendResult);
         return "send success";
     }
 
@@ -138,9 +138,9 @@ public class Producer {
         map.put("age", 18);
         map.put("salary", 9000);
         MessageHeaders messageHeaders = new MessageHeaders(map);
-        Message message = new GenericMessage("过滤消息BySql", messageHeaders);
+        Message<String> message = new GenericMessage<>("过滤消息BySql", messageHeaders);
         SendResult sendResult = rocketMQTemplate.syncSend("filterTopic", message);
-        log.info("过滤消息 发送结束 {} {}", sendResult);
+        log.info("过滤消息 发送结束 {}", sendResult);
         return "send success";
     }
 
@@ -151,9 +151,9 @@ public class Producer {
      */
     @GetMapping("/sendFilterMsgByTag")
     public String sendFilterMsgByTag() {
-        Message message = new GenericMessage("过滤消息ByTag");
+        Message<String> message = new GenericMessage<>("过滤消息ByTag");
         SendResult sendResult = rocketMQTemplate.syncSend("filterByTagTopic:tagA", message);
-        log.info("过滤消息 发送结束 {} {}", sendResult);
+        log.info("过滤消息 发送结束 {}", sendResult);
         return "send success";
     }
 
@@ -165,9 +165,9 @@ public class Producer {
      */
     @GetMapping("/sendTransactionMsg")
     public String sendTransactionMsg() {
-        Message message = new GenericMessage("事务消息");
+        Message<String> message = new GenericMessage<>("事务消息");
         SendResult sendResult = rocketMQTemplate.sendMessageInTransaction("transactionTopic", message, null);
-        log.info("事务消息 发送结束 {} {}", sendResult);
+        log.info("事务消息 发送结束 {}", sendResult);
         return "send success";
     }
 
@@ -180,9 +180,9 @@ public class Producer {
      */
     @GetMapping("/sendBroadcastMsg")
     public String sendBroadcastMsg() {
-        Message message = new GenericMessage("sendBroadcastMsg");
+        Message<String> message = new GenericMessage<>("sendBroadcastMsg");
         SendResult sendResult = rocketMQTemplate.syncSend("BroadcastMsgTopic", message);
-        log.info("广播消息 发送结束 {} {}", sendResult);
+        log.info("广播消息 发送结束 {}", sendResult);
         return "send success";
     }
 
