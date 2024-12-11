@@ -1,7 +1,6 @@
 package com.cny.rocketmqspringboot.consumer;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.spring.annotation.ConsumeMode;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
 import org.springframework.stereotype.Service;
@@ -16,9 +15,9 @@ import java.util.Date;
 @Slf4j
 @Service
 //@RocketMQMessageListener(topic = "springBooptTopic", consumerGroup = "springbootgroup1")
-//@RocketMQMessageListener(topic = "SyncMsgTopic", consumerGroup = "springbootgroup1")
+@RocketMQMessageListener(topic = "SyncMsgTopic", consumerGroup = "springbootgroup1")
 //@RocketMQMessageListener(topic = "AsyncMsgTopic", consumerGroup = "springbootgroup1")
-@RocketMQMessageListener(topic = "orderTopic", consumerGroup = "orderTopic", consumeMode = ConsumeMode.ORDERLY)
+//@RocketMQMessageListener(topic = "orderTopic", consumerGroup = "orderTopic", consumeMode = ConsumeMode.ORDERLY)
 //@RocketMQMessageListener(topic = "scheduledTopic", consumerGroup = "scheduledTopic")
 //@RocketMQMessageListener(topic = "batchTopic", consumerGroup = "batchTopic")
 //@RocketMQMessageListener(topic = "filterTopic", consumerGroup = "filterTopic", selectorType = SelectorType.SQL92, selectorExpression = "age<30 and salary>6000")
